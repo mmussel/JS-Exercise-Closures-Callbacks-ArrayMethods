@@ -48,7 +48,9 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
+function processLength(list, callback) {
+  let cars = ["Ford", "Toyota", "Audi"];
+  return cars.length
   /* CODE HERE */
 }
 
@@ -66,7 +68,7 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
+function processLastItem(stringList, callback) {
   /* CODE HERE */
 }
 
@@ -87,7 +89,10 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
+function processSum(numberList, callback) {
+  const elementSum = numberList.reduce(function(accumulator, currentValue){
+    return callback(accumulator + currentValue);
+  }, 0);
   /* CODE HERE */
 }
 
@@ -133,8 +138,13 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
+function processContains(items, list, callback) {
   /* CODE HERE */
+  const newArray = (callback(list.include(item)){
+    return list
+  }
+
+
 }
 
 /**
@@ -178,7 +188,10 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
+function getFullNames(runners/* CODE HERE */) {
+  let newArray=[];
+  runners.forEach(newArray.push(`${this.last_name}`, `${this.first_name}`));
+  return newArray;
   /* CODE HERE */
 }
 
@@ -225,9 +238,14 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function tallyUpDonations(runners) {
+  const allDonations = runners.reduce(function(moneyPit, currentValue){
+    return moneyPit + currentValue.donation
+  }, 0);
+  return allDonations;
+  }
+   /* CODE HERE */
+
 
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
