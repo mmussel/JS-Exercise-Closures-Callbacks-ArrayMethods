@@ -49,8 +49,7 @@ function processFirstItem(stringList, callback) {
  * should return "There are 0".
 */
 function processLength(list, callback) {
-  const array = [];
-  return callback(list.length)
+  return callback(list.length);
   /* CODE HERE */
 }
 
@@ -69,6 +68,7 @@ function processLength(list, callback) {
  * should return 'barbar'.
 */
 function processLastItem(stringList, callback) {
+  return callback(stringList[stringList.length -1]);
   /* CODE HERE */
 }
 
@@ -90,9 +90,10 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList, callback) {
-  const elementSum = numberList.reduce(function(accumulator, currentValue){
-    return callback(accumulator + currentValue);
+  const sum = numberList.reduce(function(accumulator, currentValue){
+    return accumulator + currentValue;
   }, 0);
+  return callback(sum);
   /* CODE HERE */
 }
 
@@ -140,12 +141,11 @@ function processProduct(/* CODE HERE */) {
 */
 function processContains(items, list, callback) {
   /* CODE HERE */
-  const newArray = (callback(list.include(item)){
-    return list
+  return callback(list.include(item));
   }
 
 
-}
+
 
 /**
  * ### Challenge `processDuplicateFree`
@@ -188,11 +188,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(runners/* CODE HERE */) {
+function getFullNames(runners) {
   let newArray=[];
-  runners.forEach(newArray.push(`${this.last_name}`, `${this.first_name}`));
+  runners.forEach(function(items){
+    newArray.push(`${this.last_name}`, `${this.first_name}`);
+  });
   return newArray;
-  /* CODE HERE */
 }
 
 /**
@@ -207,7 +208,10 @@ function getFullNames(runners/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
+function firstNamesAllCaps(runners) {
+  return runners.map(function(items) {
+    return items.first_name.toUpperCase();
+  });
   /* CODE HERE */
 }
 
@@ -224,7 +228,8 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners) {
+  
   /* CODE HERE */
 }
 
