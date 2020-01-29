@@ -49,7 +49,6 @@ function processFirstItem(stringList, callback) {
  * should return "There are 0".
 */
 function processLength(list, callback) {
-  const array = [];
   return callback(list.length)
   /* CODE HERE */
 }
@@ -69,6 +68,7 @@ function processLength(list, callback) {
  * should return 'barbar'.
 */
 function processLastItem(stringList, callback) {
+  return callback(stringList[stringList.length -1]);
   /* CODE HERE */
 }
 
@@ -90,11 +90,17 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList, callback) {
-  const elementSum = numberList.reduce(function(accumulator, currentValue){
-    return callback(accumulator + currentValue);
+  const numberTotal = numberList.reduce(function(total, num){
+    return total + num ;
   }, 0);
-  /* CODE HERE */
+return callback(numberTotal);
 }
+  // const elementSum = (accumulator, currentValue) => accumulator + currentValue;
+  //   return callback( numberList.reduce(elementSum,0));
+  // }
+  /* CODE HERE */
+  
+
 
 /**
  * ### Challenge `processProduct`
@@ -114,7 +120,8 @@ function processSum(numberList, callback) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
+function processProduct(num1, num2, callback) {
+  return callback(num1 * num2);
   /* CODE HERE */
 }
 
@@ -139,10 +146,11 @@ function processProduct(/* CODE HERE */) {
  * should return "sad".
 */
 function processContains(items, list, callback) {
-  /* CODE HERE */
-  const newArray = (callback(list.include(item)){
-    return list
-  }
+ 
+  const filterItem = list.includes(items);
+  return callback(filterItem);
+  
+
 
 
 }
@@ -166,10 +174,15 @@ function processContains(items, list, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
+function processDuplicateFree(list, callback) {
+  const setFromArray = new Set(list);
+  const arrayFromSet = Array.from(setFromArray);
+  return callback(arrayFromSet)
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
-}
 
+}
+// from() function is an inbuilt function in JavaScript which creates a new array instance from a given array. In case of a string, every alphabet of the string is converted to an element of the new array instance and in case of integer values, new array instance simple take the elements of the given array.
+// A set is a collection of items which are unique i.e no element can be repeated. Set in ES6 are ordered: elements of the set can be iterated in the insertion order. Set can store any types of values whether primitive or objects.
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 
@@ -188,9 +201,11 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(runners/* CODE HERE */) {
+function getFullNames(runners) {
   let newArray=[];
-  runners.forEach(newArray.push(`${this.last_name}`, `${this.first_name}`));
+  runners.forEach(function(item){
+    return newArray.push(`${item.last_name}, ${item.first_name}`);
+  });
   return newArray;
   /* CODE HERE */
 }
@@ -207,8 +222,13 @@ function getFullNames(runners/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  let upperCase = [];
+  runners.map(function(index){
+    upperCase.push(index.first_name.toUpperCase());
+  })
+ 
+   return upperCase;
 }
 
 /**
@@ -224,8 +244,11 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  // let newArr = [];
+ return runners.filter(function(index){
+return index.shirt_size === tShirtSize;
+ })
 }
 
 /**
@@ -264,13 +287,14 @@ function tallyUpDonations(runners) {
  * etc
 */
 function counterMaker() {
-  // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
-  }
+  let count = 0;
+  return function() {
+    return count++;
+  };
+  
+  };
   // BROKEN CODE ENDS
-}
+
 
 /**
  * ### Challenge `counterMakerWithLimit`
@@ -292,7 +316,22 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
+function counterMakerWithLimit(limit) {
+  let count = -1;
+  return function counter(){
+    if(count === limit){
+      count = -1
+    }
+    return ++count
+  }
+  // let count = 0;
+  // return function (){
+  //   count++;
+  //   if(count === max){
+  //     count = 0;
+  //   };
+  //   return count;
+  // }
   /* CODE HERE */
 }
 
